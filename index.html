@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Exemplo de Filtro de Itens</title>
+    <title>Exemplo de Filtro de Itens</title>
 </head>
 <body>
-	<input type="text" id="input">
-	<ul id="itens">
-	</ul>
+    <input type="text" id="input">
+    <ul id="itens">
+    </ul>
 
-	<script>
-		const input = document.getElementById('input');
+    <script>
+        const input = document.getElementById('input');
         const list = document.getElementById('itens');
 
         input.addEventListener('input', () => {
             const searchTerm = input.value;
 
-            fetch(`https://fullstackmobile.douglasguedes2.repl.co/data`)
+            fetch(`/data`)
                 .then(response => response.json())
                 .then(items => {
                     const filteredItems = items.filter(item => item.lego.includes(searchTerm));
@@ -28,7 +28,7 @@
                 })
                 .catch(error => console.error(error));
         });
-	</script>
+    </script>
 
 </body>
 </html>
