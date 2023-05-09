@@ -15,7 +15,7 @@
         input.addEventListener('input', () => {
             const searchTerm = input.value;
 
-            fetch(`/data`)
+            fetch('https://fullstackmobile.douglasguedes2.repl.co/data')
                 .then(response => response.json())
                 .then(items => {
                     const filteredItems = items.filter(item => item.lego.includes(searchTerm));
