@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Exemplo de Filtro de Itens</title>
+</head>
+<body>
+	<input type="text" id="filtro">
+	<ul id="itens">
+	</ul>
+
+	<script>
+		const input = document.getElementById('input');
+        const list = document.getElementById('list');
+
+        input.addEventListener('input', () => {
+            const searchTerm = input.value;
+
+            fetch(`https://fullstackmobile.douglasguedes2.repl.co/data`)
+                .then(response => response.json())
+                .then(items => {
+                    const filteredItems = items.filter(item => item.lego.includes(searchTerm));
+                    list.innerHTML = '';
+                    filteredItems.forEach(item => {
+                        const listItem = document.createElement('li');
+                        listItem.innerText = `${item.lego} - R$${item.price}`;
+                        list.appendChild(listItem);
+                    });
+                })
+                .catch(error => console.error(error));
+        });
+	</script>
+</body>
+</html>
